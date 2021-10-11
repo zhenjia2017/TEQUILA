@@ -8,7 +8,7 @@ and temporal constraints. Answers to sub-questions are then retrieved from the u
 constraint reasoning on temporal intervals to compute final answers to the full question. Comparisons against state-of-the-art
 baselines show the viability of our method. 
 
-<center><img src="example.png"  alt="example" width=80%  /></center>
+<center><img src="example.png"  alt="example" width=50%  /></center>
 
 *An example of TEQUILA pipeline including the steps of "decompose and rewrite", "answer sub-questions", and "reason on time intervals".*
 
