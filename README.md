@@ -8,6 +8,8 @@ and temporal constraints. Answers to sub-questions are then retrieved from the u
 constraint reasoning on temporal intervals to compute final answers to the full question. Comparisons against state-of-the-art
 baselines show the viability of our method. 
 
+<center><img src="example.png"  alt="example" width=80%  /></center>
+
 For more details see our paper: [TEQUILA: Temporal Question Answering over Knowledge Bases](https://arxiv.org/abs/1908.03650) and visit our project website: https://tequila.mpi-inf.mpg.de.
 
 If you use this code, please cite:
