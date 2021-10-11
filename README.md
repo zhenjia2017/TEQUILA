@@ -10,6 +10,8 @@ baselines show the viability of our method.
 
 <center><img src="example.png"  alt="example" width=80%  /></center>
 
+*An example of TEQUILA pipeline including the steps of "decompose and rewrite", "answer sub-questions", and "reason on time intervals".*
+
 For more details see our paper: [TEQUILA: Temporal Question Answering over Knowledge Bases](https://arxiv.org/abs/1908.03650) and visit our project website: https://tequila.mpi-inf.mpg.de.
 
 If you use this code, please cite:
