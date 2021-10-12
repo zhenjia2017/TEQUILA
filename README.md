@@ -45,8 +45,6 @@ If you use this code, please cite:
 ## Usage
  
 The system contains two parts:
-------
-
 * Frontend: it provides an user interface and realizes the functions of detecting temporal questions, decomposing and rewriting sub-questions, and reasoning. Frontend is implemented in JAVA.
 * Backend: it provides the underlying KBQA service and a plug-in for the service to answer sub-questions and retrieve dates related to candidate answers. Backend is implemented in Python.    
 
