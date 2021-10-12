@@ -44,14 +44,15 @@ If you use this code, please cite:
 
 ## Usage
  
-###The system contains two parts: 
+The system contains two parts:
+------
 
 * Frontend: it provides an user interface and realizes the functions of detecting temporal questions, decomposing and rewriting sub-questions, and reasoning. Frontend is implemented in JAVA.
 * Backend: it provides the underlying KBQA service and a plug-in for the service to answer sub-questions and retrieve dates related to candidate answers. Backend is implemented in Python.    
 
-###Backend
-
-We use AQQU as the underlying KB-QA system, you should install [AQQU](https://github.com/ad-freiburg/aqqu/blob/master/QUICKSTART.md) first and then copy the following two files into the "data" directory. 
+Backend
+------
+We use AQQU as the underlying KB-QA system, you should install [AQQU](https://github.com/elmarhaussmann/aqqu) first and then copy the following two files into the "data" directory. 
 
 * temporal-predicate-pairs
 * stop-words
@@ -66,11 +67,11 @@ Change the base file path in config.cfg according to your system.
 
 Start the underlying QA service using the following command:
 
-python TEQUILA\_AQQU\_backend.py
+    python TEQUILA\_AQQU\_backend.py
  
 
-###Frontend
-
+Frontend
+------
 The function "QuestionAnswer" of the file "QuestionAnswer.java" in "org.tempo.testsample" provides an example to take the question with parameters as the input, access the underlying QA service, return the results including answers and other intermediated results in a JSON object.
  
 The definition of the parameters are in "org.tempo.Util". You should set global configurations (CGlobalConfiguration.java) such as the gloabal source folder or the base file path, etc. according to your system. 
