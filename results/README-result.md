@@ -1,4 +1,4 @@
-These are various files used for evaluation. The json versions contain questions, gold answers, AQQU+TEQUILA and QUINT+TEQUILA answers. 
+These are six files used for evaluation as following. 
 
 ### Basic result json file
 Question and answer are provided.
