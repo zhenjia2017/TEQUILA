@@ -45,7 +45,7 @@ Change the base file path in config.cfg according to your system.
 
 Start the underlying QA service using the following command:
 
-    python TEQUILA\_AQQU\_backend.py
+    python TEQUILA_AQQU_backend.py
  
 tequila-front
 ------
