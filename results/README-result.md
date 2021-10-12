@@ -1,4 +1,4 @@
-These are six JSON files used for evaluation as following. 
+There are six JSON files used for evaluation as following. 
 
 ### Basic result json file
 Question and answer are provided.
