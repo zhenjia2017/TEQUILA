@@ -36,7 +36,7 @@ If you use this code, please cite:
 ```
 ## Requirements
 
-* OS: Linux system 
+* OS: Windows, Linux system 
 * Software: Java 8 as well as Python 2.7
 * Package: [TreeTagger](http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/#parfiles), [HeidelTime](https://github.com/HeidelTime/heideltime), [Stanford CoreNLP 3.7.0](http://nlp.stanford.edu/software/stanford-corenlp-2016-10-31.zip)
 * Underlying KB-QA systems: [AQQU](https://github.com/elmarhaussmann/aqqu) and [QUINT](https://quint.mpi-inf.mpg.de)
@@ -45,8 +45,8 @@ If you use this code, please cite:
 ## Usage
  
 The system contains two parts:
-* Frontend: it provides an user interface and realizes the functions of detecting temporal questions, decomposing and rewriting sub-questions, and reasoning. Frontend is implemented in JAVA.
-* Backend: it provides the underlying KBQA service and a plug-in for the service to answer sub-questions and retrieve dates related to candidate answers. Backend is implemented in Python.    
+* tequila-front: it realizes the functions of detecting temporal questions, decomposing and rewriting sub-questions, and reasoning, and it is implemented in JAVA.
+* backend: it provides the underlying KBQA service and a plug-in for the service to answer sub-questions and retrieve dates related to candidate answers. Backend is implemented in Python.    
 
 Backend
 ------
@@ -68,17 +68,19 @@ Start the underlying QA service using the following command:
     python TEQUILA\_AQQU\_backend.py
  
 
-Frontend
+tequila-front
 ------
-The function "QuestionAnswer" of the file "QuestionAnswer.java" in "org.tempo.testsample" provides an example to take the question with parameters as the input, access the underlying QA service, return the results including answers and other intermediated results in a JSON object.
+The file "QuestionAnswer.java" in "org.tempo.testsample" provides an example to take the question with parameters as the input, access the underlying QA service, return the results including answers and other intermediated results in a JSON object.
  
 The definition of the parameters are in "org.tempo.Util". You should set global configurations (CGlobalConfiguration.java) such as the gloabal source folder or the base file path, etc. according to your system. 
 
 If you want to reproduce the system without installing AQQU, you can set the parameter "qaMode" with "OFFLINE". TEQUILA provides the sub-question answers files (TempQuestions\_allsubquestion\_aqqu.txt and TempQuestions\_allsubquestion\_quint.txt) for the questions in [TempQuestions Dataset](http://qa.mpi-inf.mpg.de/TempQuestions.zip).
 
-The following two files required are provided in "source\dictionary" directory:
+The following files required are provided in "source\dictionary" directory:
 
 * temporal-predicate-pairs: temporal predicate pairs
 * event\_dictionary\_only.txt: event dictionary
+* TempQuestions\_allsubquestion\_aqqu.txt: answers to sub-questions from AQQU
+* TempQuestions\_allsubquestion\_quint.txt: answers to sub-questions from QUINT
  
 If you face any issues when using the code please feel free to contact Zhen Jia (zjia@swjtu.edu.cn), Rishiraj Saha Roy (rishiraj@mpi-inf.mpg.de) or Gerhard Weikum (weikum@mpi-inf.mpg.de).
