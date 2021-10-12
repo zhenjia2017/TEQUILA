@@ -14,6 +14,54 @@ baselines show the viability of our method.
 
 For more details see our paper: [TEQUILA: Temporal Question Answering over Knowledge Bases](https://arxiv.org/abs/1908.03650) and visit our project website: https://tequila.mpi-inf.mpg.de.
 
+## Requirements
+
+* OS: Windows, Linux system 
+* Software: Java 8 as well as Python 2.7
+* Package: [TreeTagger](http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/#parfiles), [HeidelTime](https://github.com/HeidelTime/heideltime), [Stanford CoreNLP 3.7.0](http://nlp.stanford.edu/software/stanford-corenlp-2016-10-31.zip)
+* Underlying KB-QA systems: [AQQU](https://github.com/elmarhaussmann/aqqu) and [QUINT](https://quint.mpi-inf.mpg.de)
+* Word vector model: [word2vec-GoogleNews-vectors](https://github.com/mmihaltz/word2vec-GoogleNews-vectors)
+
+## Usage
+ 
+The system contains two parts:
+* tequila-front: it realizes the functions of detecting temporal questions, decomposing and rewriting sub-questions, and reasoning, and it is implemented in JAVA.
+* backend: it provides the underlying KBQA service and a plug-in for the service to answer sub-questions and retrieve dates related to candidate answers. Backend is implemented in Python.    
+
+backend
+------
+We use AQQU as the underlying KB-QA system, you should install [AQQU](https://github.com/elmarhaussmann/aqqu) first and then copy the following two files into the "data" directory. 
+
+* temporal-predicate-pairs
+* stop-words
+
+After installing AQQU, please replace the modules with the following files:  
+
+* query\_translator.translator.py
+* query\_translator.data.py
+* query\_translator.query\_candidate.py
+
+Change the base file path in config.cfg according to your system.
+
+Start the underlying QA service using the following command:
+
+    python TEQUILA\_AQQU\_backend.py
+ 
+tequila-front
+------
+The file "QuestionAnswer.java" in "org.tempo.testsample" provides an example to take the question with parameters as the input, access the underlying QA service, return the results including answers and other intermediated results in a JSON object.
+ 
+The definition of the parameters are in "org.tempo.Util". You should set global configurations (CGlobalConfiguration.java) such as the gloabal source folder or the base file path, etc. according to your system. 
+
+If you want to reproduce the system without installing AQQU, you can set the parameter "qaMode" with "OFFLINE". TEQUILA provides the sub-question answers files (TempQuestions\_allsubquestion\_aqqu.txt and TempQuestions\_allsubquestion\_quint.txt) for the questions in [TempQuestions Dataset](http://qa.mpi-inf.mpg.de/TempQuestions.zip).
+
+The following files required are provided in "source\dictionary" directory:
+
+* temporal-predicate-pairs: temporal predicate pairs
+* event\_dictionary\_only.txt: event dictionary
+* TempQuestions\_allsubquestion\_aqqu.txt: answers to sub-questions from AQQU
+* TempQuestions\_allsubquestion\_quint.txt: answers to sub-questions from QUINT
+ 
 If you use this code, please cite:
 ```bibtex
 @inproceedings{jia:18b,
@@ -34,53 +82,5 @@ If you use this code, please cite:
  keywords = {question answering, question decomposition, temporal questions},
 }
 ```
-## Requirements
 
-* OS: Windows, Linux system 
-* Software: Java 8 as well as Python 2.7
-* Package: [TreeTagger](http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/#parfiles), [HeidelTime](https://github.com/HeidelTime/heideltime), [Stanford CoreNLP 3.7.0](http://nlp.stanford.edu/software/stanford-corenlp-2016-10-31.zip)
-* Underlying KB-QA systems: [AQQU](https://github.com/elmarhaussmann/aqqu) and [QUINT](https://quint.mpi-inf.mpg.de)
-* Word vector model: [word2vec-GoogleNews-vectors](https://github.com/mmihaltz/word2vec-GoogleNews-vectors)
-
-## Usage
- 
-The system contains two parts:
-* tequila-front: it realizes the functions of detecting temporal questions, decomposing and rewriting sub-questions, and reasoning, and it is implemented in JAVA.
-* backend: it provides the underlying KBQA service and a plug-in for the service to answer sub-questions and retrieve dates related to candidate answers. Backend is implemented in Python.    
-
-Backend
-------
-We use AQQU as the underlying KB-QA system, you should install [AQQU](https://github.com/elmarhaussmann/aqqu) first and then copy the following two files into the "data" directory. 
-
-* temporal-predicate-pairs
-* stop-words
-
-After installing AQQU, please replace the modules with the following files:  
-
-* query\_translator.translator.py
-* query\_translator.data.py
-* query\_translator.query\_candidate.py
-
-Change the base file path in config.cfg according to your system.
-
-Start the underlying QA service using the following command:
-
-    python TEQUILA\_AQQU\_backend.py
- 
-
-tequila-front
-------
-The file "QuestionAnswer.java" in "org.tempo.testsample" provides an example to take the question with parameters as the input, access the underlying QA service, return the results including answers and other intermediated results in a JSON object.
- 
-The definition of the parameters are in "org.tempo.Util". You should set global configurations (CGlobalConfiguration.java) such as the gloabal source folder or the base file path, etc. according to your system. 
-
-If you want to reproduce the system without installing AQQU, you can set the parameter "qaMode" with "OFFLINE". TEQUILA provides the sub-question answers files (TempQuestions\_allsubquestion\_aqqu.txt and TempQuestions\_allsubquestion\_quint.txt) for the questions in [TempQuestions Dataset](http://qa.mpi-inf.mpg.de/TempQuestions.zip).
-
-The following files required are provided in "source\dictionary" directory:
-
-* temporal-predicate-pairs: temporal predicate pairs
-* event\_dictionary\_only.txt: event dictionary
-* TempQuestions\_allsubquestion\_aqqu.txt: answers to sub-questions from AQQU
-* TempQuestions\_allsubquestion\_quint.txt: answers to sub-questions from QUINT
- 
 If you face any issues when using the code please feel free to contact Zhen Jia (zjia@swjtu.edu.cn), Rishiraj Saha Roy (rishiraj@mpi-inf.mpg.de) or Gerhard Weikum (weikum@mpi-inf.mpg.de).
